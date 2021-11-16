@@ -94,7 +94,6 @@ public class Server extends CoapServer {
             super("CoapTest1Resource");
         }
         public void handlePOST(CoapExchange exchange) {
-            System.out.println(exchange.getRequestText());
             payload = exchange.getRequestText();
             try {
             	sendCoapTest1Resource(payload);
