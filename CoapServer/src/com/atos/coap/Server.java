@@ -505,7 +505,7 @@ public class Server extends CoapServer {
         }
        
     }
-    /*
+    
     class TemperatureResource extends CoapResource {
     	String payload = "";
     	
@@ -687,5 +687,5 @@ public class Server extends CoapServer {
     	}
    
     }
-    */
+    
 }
