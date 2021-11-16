@@ -60,25 +60,17 @@ public class Server extends CoapServer {
     	add(new CoapTest10Resource());
     	
     }
-   
+    String userpass = "adrian.carpintero@atos.net" + ":" + "thingworx-atos";
+	String basicAuth = "Basic " + new String(Base64.getEncoder().encode(userpass.getBytes()));
+	String payload = "";
     //TEST RESOURCE 1
     class CoapTest1Resource extends CoapResource {
-    	String payload = "";
+    	
     	
     	public void sendCoapTest1Resource(String dato) throws IOException {
-    		String userpass = "adrian.carpintero@atos.net" + ":" + "thingworx-atos";
-    		String basicAuth = "Basic " + new String(Base64.getEncoder().encode(userpass.getBytes()));
+    		
     		JSONObject json = new JSONObject();
     		json.put("data", dato);
-    		
-    		//conection
-    		URL url = new URL ("http://35.216.198.132:8080/Thingworx/Things/CoapTest1Resource/Services/UpdateValue");
-    		HttpURLConnection con = (HttpURLConnection)url.openConnection();
-    		con.setRequestMethod("POST");
-    		con.setRequestProperty("Authorization", basicAuth);
-    		con.setRequestProperty("Content-Type", "application/json; utf-8");
-    		con.setDoOutput(true); 		
-    		//System.out.println(con.getResponseCode() + " " + con.getResponseMessage());
     		
     		//POST DATA
     		CloseableHttpClient httpClient = HttpClientBuilder.create().build();
@@ -96,15 +88,10 @@ public class Server extends CoapServer {
     		} finally {
     		    httpClient.close();
     		}
-    		
-    		//DISCONNECT
-    		con.disconnect();
-    		
     	}
     	
         public CoapTest1Resource() {
             super("CoapTest1Resource");
-            System.out.println(payload);
         }
         public void handlePOST(CoapExchange exchange) {
             System.out.println(exchange.getRequestText());
@@ -122,22 +109,14 @@ public class Server extends CoapServer {
     
     //TEST RESOURCE 2
     class CoapTest2Resource extends CoapResource {
-    	String payload = "";
+    	
     	
     	public void sendCoapTest2Resource(String dato) throws IOException {
-    		String userpass = "adrian.carpintero@atos.net" + ":" + "thingworx-atos";
-    		String basicAuth = "Basic " + new String(Base64.getEncoder().encode(userpass.getBytes()));
+    	
     		JSONObject json = new JSONObject();
     		json.put("data", dato);
     		
-    		//conection
-    		URL url = new URL ("http://35.216.198.132:8080/Thingworx/Things/CoapTest2Resource/Services/UpdateValue");
-    		HttpURLConnection con = (HttpURLConnection)url.openConnection();
-    		con.setRequestMethod("POST");
-    		con.setRequestProperty("Authorization", basicAuth);
-    		con.setRequestProperty("Content-Type", "application/json; utf-8");
-    		con.setDoOutput(true); 		
-    		//System.out.println(con.getResponseCode() + " " + con.getResponseMessage());
+    		
     		
     		//POST DATA
     		CloseableHttpClient httpClient = HttpClientBuilder.create().build();
@@ -156,17 +135,13 @@ public class Server extends CoapServer {
     		    httpClient.close();
     		}
     		
-    		//DISCONNECT
-    		con.disconnect();
     		
     	}
     	
         public CoapTest2Resource() {
             super("CoapTest2Resource");
-            System.out.println(payload);
         }
         public void handlePOST(CoapExchange exchange) {
-            System.out.println(exchange.getRequestText());
             payload = exchange.getRequestText();
             try {
             	sendCoapTest2Resource(payload);
@@ -181,22 +156,13 @@ public class Server extends CoapServer {
     
     //TEST RESOURCE 3
     class CoapTest3Resource extends CoapResource {
-    	String payload = "";
+  
     	
     	public void sendCoapTest3Resource(String dato) throws IOException {
-    		String userpass = "adrian.carpintero@atos.net" + ":" + "thingworx-atos";
-    		String basicAuth = "Basic " + new String(Base64.getEncoder().encode(userpass.getBytes()));
+    		
     		JSONObject json = new JSONObject();
     		json.put("data", dato);
     		
-    		//conection
-    		URL url = new URL ("http://35.216.198.132:8080/Thingworx/Things/CoapTest3Resource/Services/UpdateValue");
-    		HttpURLConnection con = (HttpURLConnection)url.openConnection();
-    		con.setRequestMethod("POST");
-    		con.setRequestProperty("Authorization", basicAuth);
-    		con.setRequestProperty("Content-Type", "application/json; utf-8");
-    		con.setDoOutput(true); 		
-    		//System.out.println(con.getResponseCode() + " " + con.getResponseMessage());
     		
     		//POST DATA
     		CloseableHttpClient httpClient = HttpClientBuilder.create().build();
@@ -215,17 +181,12 @@ public class Server extends CoapServer {
     		    httpClient.close();
     		}
     		
-    		//DISCONNECT
-    		con.disconnect();
-    		
     	}
     	
         public CoapTest3Resource() {
             super("CoapTest3Resource");
-            System.out.println(payload);
         }
         public void handlePOST(CoapExchange exchange) {
-            System.out.println(exchange.getRequestText());
             payload = exchange.getRequestText();
             try {
             	sendCoapTest3Resource(payload);
@@ -240,22 +201,11 @@ public class Server extends CoapServer {
     
     //TEST RESOURCE 4
     class CoapTest4Resource extends CoapResource {
-    	String payload = "";
     	
     	public void sendCoapTest4Resource(String dato) throws IOException {
-    		String userpass = "adrian.carpintero@atos.net" + ":" + "thingworx-atos";
-    		String basicAuth = "Basic " + new String(Base64.getEncoder().encode(userpass.getBytes()));
     		JSONObject json = new JSONObject();
     		json.put("data", dato);
     		
-    		//conection
-    		URL url = new URL ("http://35.216.198.132:8080/Thingworx/Things/CoapTest4Resource/Services/UpdateValue");
-    		HttpURLConnection con = (HttpURLConnection)url.openConnection();
-    		con.setRequestMethod("POST");
-    		con.setRequestProperty("Authorization", basicAuth);
-    		con.setRequestProperty("Content-Type", "application/json; utf-8");
-    		con.setDoOutput(true); 		
-    		//System.out.println(con.getResponseCode() + " " + con.getResponseMessage());
     		
     		//POST DATA
     		CloseableHttpClient httpClient = HttpClientBuilder.create().build();
@@ -274,17 +224,14 @@ public class Server extends CoapServer {
     		    httpClient.close();
     		}
     		
-    		//DISCONNECT
-    		con.disconnect();
+    		
     		
     	}
     	
         public CoapTest4Resource() {
             super("CoapTest4Resource");
-            System.out.println(payload);
         }
         public void handlePOST(CoapExchange exchange) {
-            System.out.println(exchange.getRequestText());
             payload = exchange.getRequestText();
             try {
             	sendCoapTest4Resource(payload);
@@ -299,22 +246,12 @@ public class Server extends CoapServer {
     
     //TEST RESOURCE 5
     class CoapTest5Resource extends CoapResource {
-    	String payload = "";
+    
     	
     	public void sendCoapTest5Resource(String dato) throws IOException {
-    		String userpass = "adrian.carpintero@atos.net" + ":" + "thingworx-atos";
-    		String basicAuth = "Basic " + new String(Base64.getEncoder().encode(userpass.getBytes()));
     		JSONObject json = new JSONObject();
     		json.put("data", dato);
     		
-    		//conection
-    		URL url = new URL ("http://35.216.198.132:8080/Thingworx/Things/CoapTest5Resource/Services/UpdateValue");
-    		HttpURLConnection con = (HttpURLConnection)url.openConnection();
-    		con.setRequestMethod("POST");
-    		con.setRequestProperty("Authorization", basicAuth);
-    		con.setRequestProperty("Content-Type", "application/json; utf-8");
-    		con.setDoOutput(true); 		
-    		//System.out.println(con.getResponseCode() + " " + con.getResponseMessage());
     		
     		//POST DATA
     		CloseableHttpClient httpClient = HttpClientBuilder.create().build();
@@ -333,17 +270,13 @@ public class Server extends CoapServer {
     		    httpClient.close();
     		}
     		
-    		//DISCONNECT
-    		con.disconnect();
     		
     	}
     	
         public CoapTest5Resource() {
             super("CoapTest5Resource");
-            System.out.println(payload);
         }
         public void handlePOST(CoapExchange exchange) {
-            System.out.println(exchange.getRequestText());
             payload = exchange.getRequestText();
             try {
             	sendCoapTest5Resource(payload);
@@ -358,22 +291,10 @@ public class Server extends CoapServer {
     
     //TEST RESOURCE 6
     class CoapTest6Resource extends CoapResource {
-    	String payload = "";
     	
     	public void sendCoapTest6Resource(String dato) throws IOException {
-    		String userpass = "adrian.carpintero@atos.net" + ":" + "thingworx-atos";
-    		String basicAuth = "Basic " + new String(Base64.getEncoder().encode(userpass.getBytes()));
     		JSONObject json = new JSONObject();
     		json.put("data", dato);
-    		
-    		//conection
-    		URL url = new URL ("http://35.216.198.132:8080/Thingworx/Things/CoapTest6Resource/Services/UpdateValue");
-    		HttpURLConnection con = (HttpURLConnection)url.openConnection();
-    		con.setRequestMethod("POST");
-    		con.setRequestProperty("Authorization", basicAuth);
-    		con.setRequestProperty("Content-Type", "application/json; utf-8");
-    		con.setDoOutput(true); 		
-    		//System.out.println(con.getResponseCode() + " " + con.getResponseMessage());
     		
     		//POST DATA
     		CloseableHttpClient httpClient = HttpClientBuilder.create().build();
@@ -392,17 +313,13 @@ public class Server extends CoapServer {
     		    httpClient.close();
     		}
     		
-    		//DISCONNECT
-    		con.disconnect();
     		
     	}
     	
         public CoapTest6Resource() {
             super("CoapTest6Resource");
-            System.out.println(payload);
         }
         public void handlePOST(CoapExchange exchange) {
-            System.out.println(exchange.getRequestText());
             payload = exchange.getRequestText();
             try {
             	sendCoapTest6Resource(payload);
@@ -417,23 +334,12 @@ public class Server extends CoapServer {
     
     //TEST RESOURCE 7
     class CoapTest7Resource extends CoapResource {
-    	String payload = "";
-    	
+    
     	public void sendCoapTest7Resource(String dato) throws IOException {
-    		String userpass = "adrian.carpintero@atos.net" + ":" + "thingworx-atos";
-    		String basicAuth = "Basic " + new String(Base64.getEncoder().encode(userpass.getBytes()));
     		JSONObject json = new JSONObject();
     		json.put("data", dato);
     		
-    		//conection
-    		URL url = new URL ("http://35.216.198.132:8080/Thingworx/Things/CoapTest7Resource/Services/UpdateValue");
-    		HttpURLConnection con = (HttpURLConnection)url.openConnection();
-    		con.setRequestMethod("POST");
-    		con.setRequestProperty("Authorization", basicAuth);
-    		con.setRequestProperty("Content-Type", "application/json; utf-8");
-    		con.setDoOutput(true); 		
-    		//System.out.println(con.getResponseCode() + " " + con.getResponseMessage());
-    		
+    	
     		//POST DATA
     		CloseableHttpClient httpClient = HttpClientBuilder.create().build();
     		try {
@@ -451,17 +357,14 @@ public class Server extends CoapServer {
     		    httpClient.close();
     		}
     		
-    		//DISCONNECT
-    		con.disconnect();
+    		
     		
     	}
     	
         public CoapTest7Resource() {
             super("CoapTest7Resource");
-            System.out.println(payload);
         }
         public void handlePOST(CoapExchange exchange) {
-            System.out.println(exchange.getRequestText());
             payload = exchange.getRequestText();
             try {
             	sendCoapTest7Resource(payload);
@@ -476,23 +379,12 @@ public class Server extends CoapServer {
     
   //TEST RESOURCE 8
     class CoapTest8Resource extends CoapResource {
-    	String payload = "";
+ 
     	
     	public void sendCoapTest8Resource(String dato) throws IOException {
-    		String userpass = "adrian.carpintero@atos.net" + ":" + "thingworx-atos";
-    		String basicAuth = "Basic " + new String(Base64.getEncoder().encode(userpass.getBytes()));
     		JSONObject json = new JSONObject();
     		json.put("data", dato);
-    		
-    		//conection
-    		URL url = new URL ("http://35.216.198.132:8080/Thingworx/Things/CoapTest8Resource/Services/UpdateValue");
-    		HttpURLConnection con = (HttpURLConnection)url.openConnection();
-    		con.setRequestMethod("POST");
-    		con.setRequestProperty("Authorization", basicAuth);
-    		con.setRequestProperty("Content-Type", "application/json; utf-8");
-    		con.setDoOutput(true); 		
-    		//System.out.println(con.getResponseCode() + " " + con.getResponseMessage());
-    		
+    			
     		//POST DATA
     		CloseableHttpClient httpClient = HttpClientBuilder.create().build();
     		try {
@@ -510,17 +402,13 @@ public class Server extends CoapServer {
     		    httpClient.close();
     		}
     		
-    		//DISCONNECT
-    		con.disconnect();
     		
     	}
     	
         public CoapTest8Resource() {
             super("CoapTest8Resource");
-            System.out.println(payload);
         }
         public void handlePOST(CoapExchange exchange) {
-            System.out.println(exchange.getRequestText());
             payload = exchange.getRequestText();
             try {
             	sendCoapTest8Resource(payload);
@@ -535,22 +423,11 @@ public class Server extends CoapServer {
     
   //TEST RESOURCE 9
     class CoapTest9Resource extends CoapResource {
-    	String payload = "";
+    	
     	
     	public void sendCoapTest9Resource(String dato) throws IOException {
-    		String userpass = "adrian.carpintero@atos.net" + ":" + "thingworx-atos";
-    		String basicAuth = "Basic " + new String(Base64.getEncoder().encode(userpass.getBytes()));
     		JSONObject json = new JSONObject();
     		json.put("data", dato);
-    		
-    		//conection
-    		URL url = new URL ("http://35.216.198.132:8080/Thingworx/Things/CoapTest9Resource/Services/UpdateValue");
-    		HttpURLConnection con = (HttpURLConnection)url.openConnection();
-    		con.setRequestMethod("POST");
-    		con.setRequestProperty("Authorization", basicAuth);
-    		con.setRequestProperty("Content-Type", "application/json; utf-8");
-    		con.setDoOutput(true); 		
-    		//System.out.println(con.getResponseCode() + " " + con.getResponseMessage());
     		
     		//POST DATA
     		CloseableHttpClient httpClient = HttpClientBuilder.create().build();
@@ -567,19 +444,14 @@ public class Server extends CoapServer {
     		    // handle exception here
     		} finally {
     		    httpClient.close();
-    		}
-    		
-    		//DISCONNECT
-    		con.disconnect();
+    		}  		
     		
     	}
     	
         public CoapTest9Resource() {
             super("CoapTest9Resource");
-            System.out.println(payload);
         }
         public void handlePOST(CoapExchange exchange) {
-            System.out.println(exchange.getRequestText());
             payload = exchange.getRequestText();
             try {
             	sendCoapTest9Resource(payload);
@@ -594,22 +466,10 @@ public class Server extends CoapServer {
     
   //TEST RESOURCE 10
     class CoapTest10Resource extends CoapResource {
-    	String payload = "";
     	
     	public void sendCoapTest10Resource(String dato) throws IOException {
-    		String userpass = "adrian.carpintero@atos.net" + ":" + "thingworx-atos";
-    		String basicAuth = "Basic " + new String(Base64.getEncoder().encode(userpass.getBytes()));
     		JSONObject json = new JSONObject();
     		json.put("data", dato);
-    		
-    		//conection
-    		URL url = new URL ("http://35.216.198.132:8080/Thingworx/Things/CoapTest10Resource/Services/UpdateValue");
-    		HttpURLConnection con = (HttpURLConnection)url.openConnection();
-    		con.setRequestMethod("POST");
-    		con.setRequestProperty("Authorization", basicAuth);
-    		con.setRequestProperty("Content-Type", "application/json; utf-8");
-    		con.setDoOutput(true); 		
-    		//System.out.println(con.getResponseCode() + " " + con.getResponseMessage());
     		
     		//POST DATA
     		CloseableHttpClient httpClient = HttpClientBuilder.create().build();
@@ -628,17 +488,13 @@ public class Server extends CoapServer {
     		    httpClient.close();
     		}
     		
-    		//DISCONNECT
-    		con.disconnect();
     		
     	}
     	
         public CoapTest10Resource() {
             super("CoapTest10Resource");
-            System.out.println(payload);
         }
         public void handlePOST(CoapExchange exchange) {
-            System.out.println(exchange.getRequestText());
             payload = exchange.getRequestText();
             try {
             	sendCoapTest10Resource(payload);
