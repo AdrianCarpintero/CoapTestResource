@@ -65,22 +65,12 @@ public class Server extends CoapServer {
 	String payload = "";
     //TEST RESOURCE 1
 	class CoapTest1Resource extends CoapResource {
-    	String payload = "";
+    	
     	
     	public void sendCoapTest1Resource(String dato) throws IOException {
-    		String userpass = "adrian.carpintero@atos.net" + ":" + "thingworx-atos";
-    		String basicAuth = "Basic " + new String(Base64.getEncoder().encode(userpass.getBytes()));
     		JSONObject json = new JSONObject();
     		json.put("data", dato);
     		
-    		//conection
-    		URL url = new URL ("http://35.216.198.132:8080/Thingworx/Things/CoapTest1Resource/Services/UpdateValue");
-    		HttpURLConnection con = (HttpURLConnection)url.openConnection();
-    		con.setRequestMethod("POST");
-    		con.setRequestProperty("Authorization", basicAuth);
-    		con.setRequestProperty("Content-Type", "application/json; utf-8");
-    		con.setDoOutput(true); 		
-    		//System.out.println(con.getResponseCode() + " " + con.getResponseMessage());
     		
     		//POST DATA
     		CloseableHttpClient httpClient = HttpClientBuilder.create().build();
@@ -98,9 +88,6 @@ public class Server extends CoapServer {
     		} finally {
     		    httpClient.close();
     		}
-    		
-    		//DISCONNECT
-    		con.disconnect();
     		
     	}
     	
