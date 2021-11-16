@@ -45,9 +45,9 @@ public class Server extends CoapServer {
     }
 
     public Server() throws SocketException {
-    	/*add(new TemperatureResource());
+    	add(new TemperatureResource());
     	add(new HumidityResource());
-    	add(new PaSoSResource());*/
+    	add(new PaSoSResource());
     	add(new CoapTest1Resource());
     	add(new CoapTest2Resource());
     	add(new CoapTest3Resource());
