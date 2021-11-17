@@ -63,15 +63,12 @@ public class Server extends CoapServer {
     String userpass = "adrian.carpintero@atos.net" + ":" + "thingworx-atos";
 	String basicAuth = "Basic " + new String(Base64.getEncoder().encode(userpass.getBytes()));
 	String payload = "";
-    //TEST RESOURCE 1
+	
+//TEST RESOURCE 1
 	class CoapTest1Resource extends CoapResource {
-    	
-    	
     	public void sendCoapTest1Resource(String dato) throws IOException {
     		JSONObject json = new JSONObject();
     		json.put("data", dato);
-    		
-    		
     		//POST DATA
     		CloseableHttpClient httpClient = HttpClientBuilder.create().build();
     		try {
@@ -87,8 +84,7 @@ public class Server extends CoapServer {
     		    // handle exception here
     		} finally {
     		    httpClient.close();
-    		}
-    		
+    		}  		
     	}
     	
         public CoapTest1Resource() {
@@ -110,406 +106,376 @@ public class Server extends CoapServer {
         }
     }
     
-    //TEST RESOURCE 2
-    class CoapTest2Resource extends CoapResource {
-    	
-    	
-    	public void sendCoapTest2Resource(String dato) throws IOException {
-    	
-    		JSONObject json = new JSONObject();
-    		json.put("data", dato);
-    		
-    		
-    		
-    		//POST DATA
-    		CloseableHttpClient httpClient = HttpClientBuilder.create().build();
-    		try {
-    		    HttpPost request = new HttpPost("http://35.216.198.132:8080/Thingworx/Things/CoapTest2Resource/Services/UpdateValue");
-    		    StringEntity params = new StringEntity(json.toString(),ContentType.APPLICATION_JSON);
-    		    request.addHeader("content-type", "application/json");
-    		    request.addHeader("authorization", basicAuth);
-    		    request.setEntity(params);
-    		    
-    		    httpClient.execute(request);
-    		// handle response here...
-    		} catch (Exception ex) {
-    		    // handle exception here
-    		} finally {
-    		    httpClient.close();
-    		}
-    		
-    		
-    	}
-    	
-        public CoapTest2Resource() {
-            super("CoapTest2Resource");
-        }
-        public void handlePOST(CoapExchange exchange) {
-            payload = exchange.getRequestText();
-            try {
-            	sendCoapTest2Resource(payload);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-            exchange.respond("POST_REQUEST_SUCCESS");
-        }
-       
-    }
-    
-    //TEST RESOURCE 3
-    class CoapTest3Resource extends CoapResource {
-  
-    	
-    	public void sendCoapTest3Resource(String dato) throws IOException {
-    		
-    		JSONObject json = new JSONObject();
-    		json.put("data", dato);
-    		
-    		
-    		//POST DATA
-    		CloseableHttpClient httpClient = HttpClientBuilder.create().build();
-    		try {
-    		    HttpPost request = new HttpPost("http://35.216.198.132:8080/Thingworx/Things/CoapTest3Resource/Services/UpdateValue");
-    		    StringEntity params = new StringEntity(json.toString(),ContentType.APPLICATION_JSON);
-    		    request.addHeader("content-type", "application/json");
-    		    request.addHeader("authorization", basicAuth);
-    		    request.setEntity(params);
-    		    
-    		    httpClient.execute(request);
-    		// handle response here...
-    		} catch (Exception ex) {
-    		    // handle exception here
-    		} finally {
-    		    httpClient.close();
-    		}
-    		
-    	}
-    	
-        public CoapTest3Resource() {
-            super("CoapTest3Resource");
-        }
-        public void handlePOST(CoapExchange exchange) {
-            payload = exchange.getRequestText();
-            try {
-            	sendCoapTest3Resource(payload);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-            exchange.respond("POST_REQUEST_SUCCESS");
-        }
-       
-    }
-    
-    //TEST RESOURCE 4
-    class CoapTest4Resource extends CoapResource {
-    	
-    	public void sendCoapTest4Resource(String dato) throws IOException {
-    		JSONObject json = new JSONObject();
-    		json.put("data", dato);
-    		
-    		
-    		//POST DATA
-    		CloseableHttpClient httpClient = HttpClientBuilder.create().build();
-    		try {
-    		    HttpPost request = new HttpPost("http://35.216.198.132:8080/Thingworx/Things/CoapTest4Resource/Services/UpdateValue");
-    		    StringEntity params = new StringEntity(json.toString(),ContentType.APPLICATION_JSON);
-    		    request.addHeader("content-type", "application/json");
-    		    request.addHeader("authorization", basicAuth);
-    		    request.setEntity(params);
-    		    
-    		    httpClient.execute(request);
-    		// handle response here...
-    		} catch (Exception ex) {
-    		    // handle exception here
-    		} finally {
-    		    httpClient.close();
-    		}
-    		
-    		
-    		
-    	}
-    	
-        public CoapTest4Resource() {
-            super("CoapTest4Resource");
-        }
-        public void handlePOST(CoapExchange exchange) {
-            payload = exchange.getRequestText();
-            try {
-            	sendCoapTest4Resource(payload);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-            exchange.respond("POST_REQUEST_SUCCESS");
-        }
-       
-    }
-    
-    //TEST RESOURCE 5
-    class CoapTest5Resource extends CoapResource {
-    
-    	
-    	public void sendCoapTest5Resource(String dato) throws IOException {
-    		JSONObject json = new JSONObject();
-    		json.put("data", dato);
-    		
-    		
-    		//POST DATA
-    		CloseableHttpClient httpClient = HttpClientBuilder.create().build();
-    		try {
-    		    HttpPost request = new HttpPost("http://35.216.198.132:8080/Thingworx/Things/CoapTest5Resource/Services/UpdateValue");
-    		    StringEntity params = new StringEntity(json.toString(),ContentType.APPLICATION_JSON);
-    		    request.addHeader("content-type", "application/json");
-    		    request.addHeader("authorization", basicAuth);
-    		    request.setEntity(params);
-    		    
-    		    httpClient.execute(request);
-    		// handle response here...
-    		} catch (Exception ex) {
-    		    // handle exception here
-    		} finally {
-    		    httpClient.close();
-    		}
-    		
-    		
-    	}
-    	
-        public CoapTest5Resource() {
-            super("CoapTest5Resource");
-        }
-        public void handlePOST(CoapExchange exchange) {
-            payload = exchange.getRequestText();
-            try {
-            	sendCoapTest5Resource(payload);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-            exchange.respond("POST_REQUEST_SUCCESS");
-        }
-       
-    }
-    
-    //TEST RESOURCE 6
-    class CoapTest6Resource extends CoapResource {
-    	
-    	public void sendCoapTest6Resource(String dato) throws IOException {
-    		JSONObject json = new JSONObject();
-    		json.put("data", dato);
-    		
-    		//POST DATA
-    		CloseableHttpClient httpClient = HttpClientBuilder.create().build();
-    		try {
-    		    HttpPost request = new HttpPost("http://35.216.198.132:8080/Thingworx/Things/CoapTest6Resource/Services/UpdateValue");
-    		    StringEntity params = new StringEntity(json.toString(),ContentType.APPLICATION_JSON);
-    		    request.addHeader("content-type", "application/json");
-    		    request.addHeader("authorization", basicAuth);
-    		    request.setEntity(params);
-    		    
-    		    httpClient.execute(request);
-    		// handle response here...
-    		} catch (Exception ex) {
-    		    // handle exception here
-    		} finally {
-    		    httpClient.close();
-    		}
-    		
-    		
-    	}
-    	
-        public CoapTest6Resource() {
-            super("CoapTest6Resource");
-        }
-        public void handlePOST(CoapExchange exchange) {
-            payload = exchange.getRequestText();
-            try {
-            	sendCoapTest6Resource(payload);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-            exchange.respond("POST_REQUEST_SUCCESS");
-        }
-       
-    }
-    
-    //TEST RESOURCE 7
-    class CoapTest7Resource extends CoapResource {
-    
-    	public void sendCoapTest7Resource(String dato) throws IOException {
-    		JSONObject json = new JSONObject();
-    		json.put("data", dato);
-    		
-    	
-    		//POST DATA
-    		CloseableHttpClient httpClient = HttpClientBuilder.create().build();
-    		try {
-    		    HttpPost request = new HttpPost("http://35.216.198.132:8080/Thingworx/Things/CoapTest7Resource/Services/UpdateValue");
-    		    StringEntity params = new StringEntity(json.toString(),ContentType.APPLICATION_JSON);
-    		    request.addHeader("content-type", "application/json");
-    		    request.addHeader("authorization", basicAuth);
-    		    request.setEntity(params);
-    		    
-    		    httpClient.execute(request);
-    		// handle response here...
-    		} catch (Exception ex) {
-    		    // handle exception here
-    		} finally {
-    		    httpClient.close();
-    		}
-    		
-    		
-    		
-    	}
-    	
-        public CoapTest7Resource() {
-            super("CoapTest7Resource");
-        }
-        public void handlePOST(CoapExchange exchange) {
-            payload = exchange.getRequestText();
-            try {
-            	sendCoapTest7Resource(payload);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-            exchange.respond("POST_REQUEST_SUCCESS");
-        }
-       
-    }
-    
-  //TEST RESOURCE 8
-    class CoapTest8Resource extends CoapResource {
- 
-    	
-    	public void sendCoapTest8Resource(String dato) throws IOException {
-    		JSONObject json = new JSONObject();
-    		json.put("data", dato);
-    			
-    		//POST DATA
-    		CloseableHttpClient httpClient = HttpClientBuilder.create().build();
-    		try {
-    		    HttpPost request = new HttpPost("http://35.216.198.132:8080/Thingworx/Things/CoapTest8Resource/Services/UpdateValue");
-    		    StringEntity params = new StringEntity(json.toString(),ContentType.APPLICATION_JSON);
-    		    request.addHeader("content-type", "application/json");
-    		    request.addHeader("authorization", basicAuth);
-    		    request.setEntity(params);
-    		    
-    		    httpClient.execute(request);
-    		// handle response here...
-    		} catch (Exception ex) {
-    		    // handle exception here
-    		} finally {
-    		    httpClient.close();
-    		}
-    		
-    		
-    	}
-    	
-        public CoapTest8Resource() {
-            super("CoapTest8Resource");
-        }
-        public void handlePOST(CoapExchange exchange) {
-            payload = exchange.getRequestText();
-            try {
-            	sendCoapTest8Resource(payload);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-            exchange.respond("POST_REQUEST_SUCCESS");
-        }
-       
-    }
-    
-  //TEST RESOURCE 9
-    class CoapTest9Resource extends CoapResource {
-    	
-    	
-    	public void sendCoapTest9Resource(String dato) throws IOException {
-    		JSONObject json = new JSONObject();
-    		json.put("data", dato);
-    		
-    		//POST DATA
-    		CloseableHttpClient httpClient = HttpClientBuilder.create().build();
-    		try {
-    		    HttpPost request = new HttpPost("http://35.216.198.132:8080/Thingworx/Things/CoapTest9Resource/Services/UpdateValue");
-    		    StringEntity params = new StringEntity(json.toString(),ContentType.APPLICATION_JSON);
-    		    request.addHeader("content-type", "application/json");
-    		    request.addHeader("authorization", basicAuth);
-    		    request.setEntity(params);
-    		    
-    		    httpClient.execute(request);
-    		// handle response here...
-    		} catch (Exception ex) {
-    		    // handle exception here
-    		} finally {
-    		    httpClient.close();
-    		}  		
-    		
-    	}
-    	
-        public CoapTest9Resource() {
-            super("CoapTest9Resource");
-        }
-        public void handlePOST(CoapExchange exchange) {
-            payload = exchange.getRequestText();
-            try {
-            	sendCoapTest9Resource(payload);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-            exchange.respond("POST_REQUEST_SUCCESS");
-        }
-       
-    }
-    
-  //TEST RESOURCE 10
-    class CoapTest10Resource extends CoapResource {
-    	
-    	public void sendCoapTest10Resource(String dato) throws IOException {
-    		JSONObject json = new JSONObject();
-    		json.put("data", dato);
-    		
-    		//POST DATA
-    		CloseableHttpClient httpClient = HttpClientBuilder.create().build();
-    		try {
-    		    HttpPost request = new HttpPost("http://35.216.198.132:8080/Thingworx/Things/CoapTest10Resource/Services/UpdateValue");
-    		    StringEntity params = new StringEntity(json.toString(),ContentType.APPLICATION_JSON);
-    		    request.addHeader("content-type", "application/json");
-    		    request.addHeader("authorization", basicAuth);
-    		    request.setEntity(params);
-    		    
-    		    httpClient.execute(request);
-    		// handle response here...
-    		} catch (Exception ex) {
-    		    // handle exception here
-    		} finally {
-    		    httpClient.close();
-    		}
-    		
-    		
-    	}
-    	
-        public CoapTest10Resource() {
-            super("CoapTest10Resource");
-        }
-        public void handlePOST(CoapExchange exchange) {
-            payload = exchange.getRequestText();
-            try {
-            	sendCoapTest10Resource(payload);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-            exchange.respond("POST_REQUEST_SUCCESS");
-        }
-       
-    }
-    
+//TEST RESOURCE 2
+		class CoapTest2Resource extends CoapResource {
+	    	public void sendCoapTest2Resource(String dato) throws IOException {
+	    		JSONObject json = new JSONObject();
+	    		json.put("data", dato);
+	    		//POST DATA
+	    		CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+	    		try {
+	    		    HttpPost request = new HttpPost("http://35.216.198.132:8080/Thingworx/Things/CoapTest2Resource/Services/UpdateValue");
+	    		    StringEntity params = new StringEntity(json.toString(),ContentType.APPLICATION_JSON);
+	    		    request.addHeader("content-type", "application/json");
+	    		    request.addHeader("authorization", basicAuth);
+	    		    request.setEntity(params);
+	    		    
+	    		    httpClient.execute(request);
+	    		// handle response here...
+	    		} catch (Exception ex) {
+	    		    // handle exception here
+	    		} finally {
+	    		    httpClient.close();
+	    		}  		
+	    	}
+	    	
+	        public CoapTest2Resource() {
+	            super("CoapTest2Resource");
+	        }
+	        public void handlePOST(CoapExchange exchange) {
+	            System.out.println(exchange.getRequestText());
+	            payload = exchange.getRequestText();
+	            try {
+	            	sendCoapTest2Resource(payload);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+	            exchange.respond("POST_REQUEST_SUCCESS");
+	        }
+	        public void handleGET(CoapExchange exchange) {
+	            exchange.respond("GET_REQUEST_SUCCESS");
+	        }
+	    }    
+//TEST RESOURCE 3
+		class CoapTest3Resource extends CoapResource {
+	    	public void sendCoapTest3Resource(String dato) throws IOException {
+	    		JSONObject json = new JSONObject();
+	    		json.put("data", dato);
+	    		//POST DATA
+	    		CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+	    		try {
+	    		    HttpPost request = new HttpPost("http://35.216.198.132:8080/Thingworx/Things/CoapTest3Resource/Services/UpdateValue");
+	    		    StringEntity params = new StringEntity(json.toString(),ContentType.APPLICATION_JSON);
+	    		    request.addHeader("content-type", "application/json");
+	    		    request.addHeader("authorization", basicAuth);
+	    		    request.setEntity(params);
+	    		    
+	    		    httpClient.execute(request);
+	    		// handle response here...
+	    		} catch (Exception ex) {
+	    		    // handle exception here
+	    		} finally {
+	    		    httpClient.close();
+	    		}  		
+	    	}
+	    	
+	        public CoapTest3Resource() {
+	            super("CoapTest3Resource");
+	        }
+	        public void handlePOST(CoapExchange exchange) {
+	            System.out.println(exchange.getRequestText());
+	            payload = exchange.getRequestText();
+	            try {
+	            	sendCoapTest3Resource(payload);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+	            exchange.respond("POST_REQUEST_SUCCESS");
+	        }
+	        public void handleGET(CoapExchange exchange) {
+	            exchange.respond("GET_REQUEST_SUCCESS");
+	        }
+	    }
+//TEST RESOURCE 4
+		class CoapTest4Resource extends CoapResource {
+	    	public void sendCoapTest4Resource(String dato) throws IOException {
+	    		JSONObject json = new JSONObject();
+	    		json.put("data", dato);
+	    		//POST DATA
+	    		CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+	    		try {
+	    		    HttpPost request = new HttpPost("http://35.216.198.132:8080/Thingworx/Things/CoapTest4Resource/Services/UpdateValue");
+	    		    StringEntity params = new StringEntity(json.toString(),ContentType.APPLICATION_JSON);
+	    		    request.addHeader("content-type", "application/json");
+	    		    request.addHeader("authorization", basicAuth);
+	    		    request.setEntity(params);
+	    		    
+	    		    httpClient.execute(request);
+	    		// handle response here...
+	    		} catch (Exception ex) {
+	    		    // handle exception here
+	    		} finally {
+	    		    httpClient.close();
+	    		}  		
+	    	}
+	    	
+	        public CoapTest4Resource() {
+	            super("CoapTest4Resource");
+	        }
+	        public void handlePOST(CoapExchange exchange) {
+	            System.out.println(exchange.getRequestText());
+	            payload = exchange.getRequestText();
+	            try {
+	            	sendCoapTest4Resource(payload);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+	            exchange.respond("POST_REQUEST_SUCCESS");
+	        }
+	        public void handleGET(CoapExchange exchange) {
+	            exchange.respond("GET_REQUEST_SUCCESS");
+	        }
+	    }
+//TEST RESOURCE 5
+		class CoapTest5Resource extends CoapResource {
+	    	public void sendCoapTest5Resource(String dato) throws IOException {
+	    		JSONObject json = new JSONObject();
+	    		json.put("data", dato);
+	    		//POST DATA
+	    		CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+	    		try {
+	    		    HttpPost request = new HttpPost("http://35.216.198.132:8080/Thingworx/Things/CoapTest5Resource/Services/UpdateValue");
+	    		    StringEntity params = new StringEntity(json.toString(),ContentType.APPLICATION_JSON);
+	    		    request.addHeader("content-type", "application/json");
+	    		    request.addHeader("authorization", basicAuth);
+	    		    request.setEntity(params);
+	    		    
+	    		    httpClient.execute(request);
+	    		// handle response here...
+	    		} catch (Exception ex) {
+	    		    // handle exception here
+	    		} finally {
+	    		    httpClient.close();
+	    		}  		
+	    	}
+	    	
+	        public CoapTest5Resource() {
+	            super("CoapTest5Resource");
+	        }
+	        public void handlePOST(CoapExchange exchange) {
+	            System.out.println(exchange.getRequestText());
+	            payload = exchange.getRequestText();
+	            try {
+	            	sendCoapTest5Resource(payload);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+	            exchange.respond("POST_REQUEST_SUCCESS");
+	        }
+	        public void handleGET(CoapExchange exchange) {
+	            exchange.respond("GET_REQUEST_SUCCESS");
+	        }
+	    }
+//TEST RESOURCE 6
+		class CoapTest6Resource extends CoapResource {
+	    	public void sendCoapTest6Resource(String dato) throws IOException {
+	    		JSONObject json = new JSONObject();
+	    		json.put("data", dato);
+	    		//POST DATA
+	    		CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+	    		try {
+	    		    HttpPost request = new HttpPost("http://35.216.198.132:8080/Thingworx/Things/CoapTest6Resource/Services/UpdateValue");
+	    		    StringEntity params = new StringEntity(json.toString(),ContentType.APPLICATION_JSON);
+	    		    request.addHeader("content-type", "application/json");
+	    		    request.addHeader("authorization", basicAuth);
+	    		    request.setEntity(params);
+	    		    
+	    		    httpClient.execute(request);
+	    		// handle response here...
+	    		} catch (Exception ex) {
+	    		    // handle exception here
+	    		} finally {
+	    		    httpClient.close();
+	    		}  		
+	    	}
+	    	
+	        public CoapTest6Resource() {
+	            super("CoapTest6Resource");
+	        }
+	        public void handlePOST(CoapExchange exchange) {
+	            System.out.println(exchange.getRequestText());
+	            payload = exchange.getRequestText();
+	            try {
+	            	sendCoapTest6Resource(payload);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+	            exchange.respond("POST_REQUEST_SUCCESS");
+	        }
+	        public void handleGET(CoapExchange exchange) {
+	            exchange.respond("GET_REQUEST_SUCCESS");
+	        }
+	    }
+//TEST RESOURCE 7
+		class CoapTest7Resource extends CoapResource {
+	    	public void sendCoapTest7Resource(String dato) throws IOException {
+	    		JSONObject json = new JSONObject();
+	    		json.put("data", dato);
+	    		//POST DATA
+	    		CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+	    		try {
+	    		    HttpPost request = new HttpPost("http://35.216.198.132:8080/Thingworx/Things/CoapTest7Resource/Services/UpdateValue");
+	    		    StringEntity params = new StringEntity(json.toString(),ContentType.APPLICATION_JSON);
+	    		    request.addHeader("content-type", "application/json");
+	    		    request.addHeader("authorization", basicAuth);
+	    		    request.setEntity(params);
+	    		    
+	    		    httpClient.execute(request);
+	    		// handle response here...
+	    		} catch (Exception ex) {
+	    		    // handle exception here
+	    		} finally {
+	    		    httpClient.close();
+	    		}  		
+	    	}
+	    	
+	        public CoapTest7Resource() {
+	            super("CoapTest7Resource");
+	        }
+	        public void handlePOST(CoapExchange exchange) {
+	            System.out.println(exchange.getRequestText());
+	            payload = exchange.getRequestText();
+	            try {
+	            	sendCoapTest7Resource(payload);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+	            exchange.respond("POST_REQUEST_SUCCESS");
+	        }
+	        public void handleGET(CoapExchange exchange) {
+	            exchange.respond("GET_REQUEST_SUCCESS");
+	        }
+	    }  
+//TEST RESOURCE 8
+		class CoapTest8Resource extends CoapResource {
+	    	public void sendCoapTest8Resource(String dato) throws IOException {
+	    		JSONObject json = new JSONObject();
+	    		json.put("data", dato);
+	    		//POST DATA
+	    		CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+	    		try {
+	    		    HttpPost request = new HttpPost("http://35.216.198.132:8080/Thingworx/Things/CoapTest8Resource/Services/UpdateValue");
+	    		    StringEntity params = new StringEntity(json.toString(),ContentType.APPLICATION_JSON);
+	    		    request.addHeader("content-type", "application/json");
+	    		    request.addHeader("authorization", basicAuth);
+	    		    request.setEntity(params);
+	    		    
+	    		    httpClient.execute(request);
+	    		// handle response here...
+	    		} catch (Exception ex) {
+	    		    // handle exception here
+	    		} finally {
+	    		    httpClient.close();
+	    		}  		
+	    	}
+	    	
+	        public CoapTest8Resource() {
+	            super("CoapTest8Resource");
+	        }
+	        public void handlePOST(CoapExchange exchange) {
+	            System.out.println(exchange.getRequestText());
+	            payload = exchange.getRequestText();
+	            try {
+	            	sendCoapTest8Resource(payload);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+	            exchange.respond("POST_REQUEST_SUCCESS");
+	        }
+	        public void handleGET(CoapExchange exchange) {
+	            exchange.respond("GET_REQUEST_SUCCESS");
+	        }
+	    }
+//TEST RESOURCE 9
+		class CoapTest9Resource extends CoapResource {
+	    	public void sendCoapTest9Resource(String dato) throws IOException {
+	    		JSONObject json = new JSONObject();
+	    		json.put("data", dato);
+	    		//POST DATA
+	    		CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+	    		try {
+	    		    HttpPost request = new HttpPost("http://35.216.198.132:8080/Thingworx/Things/CoapTest9Resource/Services/UpdateValue");
+	    		    StringEntity params = new StringEntity(json.toString(),ContentType.APPLICATION_JSON);
+	    		    request.addHeader("content-type", "application/json");
+	    		    request.addHeader("authorization", basicAuth);
+	    		    request.setEntity(params);
+	    		    
+	    		    httpClient.execute(request);
+	    		// handle response here...
+	    		} catch (Exception ex) {
+	    		    // handle exception here
+	    		} finally {
+	    		    httpClient.close();
+	    		}  		
+	    	}
+	    	
+	        public CoapTest9Resource() {
+	            super("CoapTest9Resource");
+	        }
+	        public void handlePOST(CoapExchange exchange) {
+	            System.out.println(exchange.getRequestText());
+	            payload = exchange.getRequestText();
+	            try {
+	            	sendCoapTest9Resource(payload);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+	            exchange.respond("POST_REQUEST_SUCCESS");
+	        }
+	        public void handleGET(CoapExchange exchange) {
+	            exchange.respond("GET_REQUEST_SUCCESS");
+	        }
+	    }
+//TEST RESOURCE 10
+		class CoapTest10Resource extends CoapResource {
+	    	public void sendCoapTest10Resource(String dato) throws IOException {
+	    		JSONObject json = new JSONObject();
+	    		json.put("data", dato);
+	    		//POST DATA
+	    		CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+	    		try {
+	    		    HttpPost request = new HttpPost("http://35.216.198.132:8080/Thingworx/Things/CoapTest10Resource/Services/UpdateValue");
+	    		    StringEntity params = new StringEntity(json.toString(),ContentType.APPLICATION_JSON);
+	    		    request.addHeader("content-type", "application/json");
+	    		    request.addHeader("authorization", basicAuth);
+	    		    request.setEntity(params);
+	    		    
+	    		    httpClient.execute(request);
+	    		// handle response here...
+	    		} catch (Exception ex) {
+	    		    // handle exception here
+	    		} finally {
+	    		    httpClient.close();
+	    		}  		
+	    	}
+	    	
+	        public CoapTest10Resource() {
+	            super("CoapTest10Resource");
+	        }
+	        public void handlePOST(CoapExchange exchange) {
+	            System.out.println(exchange.getRequestText());
+	            payload = exchange.getRequestText();
+	            try {
+	            	sendCoapTest10Resource(payload);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+	            exchange.respond("POST_REQUEST_SUCCESS");
+	        }
+	        public void handleGET(CoapExchange exchange) {
+	            exchange.respond("GET_REQUEST_SUCCESS");
+	        }
+	    }
+//TEMPERATURE RESOURCE
     class TemperatureResource extends CoapResource {
     	String payload = "";
     	
@@ -569,7 +535,7 @@ public class Server extends CoapServer {
             exchange.respond("GET_REQUEST_SUCCESS");
         }
     }
-    
+//HUMIDITY RESOURCE
     class HumidityResource extends CoapResource {
     	String payload = "";
         public HumidityResource() {
@@ -630,6 +596,7 @@ public class Server extends CoapServer {
     		
     	}     
     }
+//PaSoS RESOURCE
     class PaSoSResource extends CoapResource {
     	String payload = "";
         public PaSoSResource() {
